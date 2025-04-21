@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>GlobeTrack ✈️</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <header>
+        <h1>🌍 GlobeTrack — Plan Smart. Travel Far.</h1>
+        <p>Crafting unique travel experiences just for you.</p>
+    </header>
+
+    <main>
+
+        <form method="POST">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="text" name="present" placeholder="Current Location" required>
+            <input type="text" name="destination" placeholder="Destination" required>
+            <textarea name="interests" placeholder="Interests (e.g., food, museums)" rows="2"></textarea>
+            <textarea name="dates" placeholder="Travel Dates (e.g., 21–26 April)" rows="2"></textarea>
+            <input type="text" name="budget" placeholder="Budget (e.g., AUD 5000)" required>
+
+            <label><strong>Select Model:</strong></label><br>
+            <input type="radio" name="model" value="api" checked> Gemini API<br>
+            <input type="radio" name="model" value="local"> Local GPT2 (distilgpt2)<br><br>
+
+            <button type="submit">Plan My Trip</button>
+        </form>
+
+        {% if itinerary %}
+        <section class="output">
+            <h2>Your Personalized Itinerary 🧳</h2>
+            <div class="itinerary-text">{{ itinerary | safe }}</div>
+        </section>
+        {% endif %}
+    </main>
+
+    <footer>
+        <p>&copy; 2025 GlobeTrack. Designed for COMP8420 Assignment 2.</p>
+    </footer>
+</body>
+
+</html>
